@@ -1,0 +1,14 @@
+version: "3.9"
+services:
+  torproxy:
+    image: "dperson/torproxy"
+  
+  firefox:
+    build: .
+    environment:
+      DISPLAY: ${DISPLAY}
+    volumes:
+      - /tmp/.X11-unix/:/tmp/.X11-unix/
+      - ./user/Downloads:/home/firefox/Downloads
+      - ./user/.mozilla:/home/firefox/.mozilla
+
